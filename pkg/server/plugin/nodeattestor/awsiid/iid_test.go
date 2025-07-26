@@ -166,6 +166,7 @@ func TestAttest(t *testing.T) {
 			name:     "success with zero device index",
 			expectID: "spiffe://example.org/spire/agent/aws_iid/test-account/test-region/test-instance",
 			expectSelectors: []*common.Selector{
+				{Type: caws.PluginName, Value: "account:id:test-account"},
 				{Type: caws.PluginName, Value: "az:test-az"},
 				{Type: caws.PluginName, Value: "image:id:test-image-id"},
 				{Type: caws.PluginName, Value: "instance:id:test-instance"},
@@ -181,6 +182,7 @@ func TestAttest(t *testing.T) {
 			},
 			expectID: "spiffe://example.org/spire/agent/aws_iid/test-account/test-region/test-instance",
 			expectSelectors: []*common.Selector{
+				{Type: caws.PluginName, Value: "account:id:test-account"},
 				{Type: caws.PluginName, Value: "az:test-az"},
 				{Type: caws.PluginName, Value: "image:id:test-image-id"},
 				{Type: caws.PluginName, Value: "instance:id:test-instance"},
@@ -195,6 +197,7 @@ func TestAttest(t *testing.T) {
 			},
 			expectID: "spiffe://example.org/spire/agent/aws_iid/test-account/test-region/test-instance",
 			expectSelectors: []*common.Selector{
+				{Type: caws.PluginName, Value: "account:id:test-account"},
 				{Type: caws.PluginName, Value: "az:test-az"},
 				{Type: caws.PluginName, Value: "image:id:test-image-id"},
 				{Type: caws.PluginName, Value: "instance:id:test-instance"},
@@ -209,6 +212,7 @@ func TestAttest(t *testing.T) {
 			},
 			expectID: "spiffe://example.org/spire/agent/aws_iid/test-account/test-region/test-instance",
 			expectSelectors: []*common.Selector{
+				{Type: caws.PluginName, Value: "account:id:test-account"},
 				{Type: caws.PluginName, Value: "az:test-az"},
 				{Type: caws.PluginName, Value: "image:id:test-image-id"},
 				{Type: caws.PluginName, Value: "instance:id:test-instance"},
@@ -238,6 +242,7 @@ func TestAttest(t *testing.T) {
 			},
 			expectID: "spiffe://example.org/spire/agent/aws_iid/test-account/test-region/test-instance",
 			expectSelectors: []*common.Selector{
+				{Type: caws.PluginName, Value: "account:id:test-account"},
 				{Type: caws.PluginName, Value: "az:test-az"},
 				{Type: caws.PluginName, Value: "image:id:test-image-id"},
 				{Type: caws.PluginName, Value: "instance:id:test-instance"},
@@ -294,6 +299,7 @@ func TestAttest(t *testing.T) {
 			},
 			expectID: "spiffe://example.org/spire/agent/aws_iid/test-account/test-region/test-instance",
 			expectSelectors: []*common.Selector{
+				{Type: caws.PluginName, Value: "account:id:test-account"},
 				{Type: caws.PluginName, Value: "az:test-az"},
 				{Type: caws.PluginName, Value: "image:id:test-image-id"},
 				{Type: caws.PluginName, Value: "instance:id:test-instance"},
@@ -305,6 +311,7 @@ func TestAttest(t *testing.T) {
 			config:   `agent_path_template = "/{{ .PluginName }}/custom/{{ .AccountID }}/{{ .Region }}/{{ .InstanceID }}"`,
 			expectID: "spiffe://example.org/spire/agent/aws_iid/custom/test-account/test-region/test-instance",
 			expectSelectors: []*common.Selector{
+				{Type: caws.PluginName, Value: "account:id:test-account"},
 				{Type: caws.PluginName, Value: "az:test-az"},
 				{Type: caws.PluginName, Value: "image:id:test-image-id"},
 				{Type: caws.PluginName, Value: "instance:id:test-instance"},
@@ -324,6 +331,7 @@ func TestAttest(t *testing.T) {
 			config:   `agent_path_template = "/{{ .PluginName }}/zone1/{{ .Tags.Hostname }}"`,
 			expectID: "spiffe://example.org/spire/agent/aws_iid/zone1/host1",
 			expectSelectors: []*common.Selector{
+				{Type: caws.PluginName, Value: "account:id:test-account"},
 				{Type: caws.PluginName, Value: "az:test-az"},
 				{Type: caws.PluginName, Value: "image:id:test-image-id"},
 				{Type: caws.PluginName, Value: "instance:id:test-instance"},
@@ -366,6 +374,7 @@ func TestAttest(t *testing.T) {
 			},
 			expectID: "spiffe://example.org/spire/agent/aws_iid/test-account/test-region/test-instance",
 			expectSelectors: []*common.Selector{
+				{Type: caws.PluginName, Value: "account:id:test-account"},
 				{Type: caws.PluginName, Value: "az:test-az"},
 				{Type: caws.PluginName, Value: "iamrole:role1"},
 				{Type: caws.PluginName, Value: "iamrole:role2"},
@@ -407,6 +416,7 @@ func TestAttest(t *testing.T) {
 			},
 			expectID: "spiffe://example.org/spire/agent/aws_iid/test-account/test-region/test-instance",
 			expectSelectors: []*common.Selector{
+				{Type: caws.PluginName, Value: "account:id:test-account"},
 				{Type: caws.PluginName, Value: "az:test-az"},
 				{Type: caws.PluginName, Value: "image:id:test-image-id"},
 				{Type: caws.PluginName, Value: "instance:id:test-instance"},
@@ -470,6 +480,7 @@ func TestAttest(t *testing.T) {
 			},
 			expectID: "spiffe://example.org/spire/agent/aws_iid/123456789/test-region/test-instance",
 			expectSelectors: []*common.Selector{
+				{Type: caws.PluginName, Value: "account:id:123456789"},
 				{Type: caws.PluginName, Value: "az:test-az"},
 				{Type: caws.PluginName, Value: "image:id:test-image-id"},
 				{Type: caws.PluginName, Value: "instance:id:test-instance"},

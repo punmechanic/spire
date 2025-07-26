@@ -74,6 +74,7 @@ const (
 	imageIDSelectorPrefix    = "image:id"
 	instanceIDSelectorPrefix = "instance:id"
 	regionSelectorPrefix     = "region"
+	accountIDSelectorPrefix  = "account:id"
 	sgIDSelectorPrefix       = "sg:id"
 	sgNameSelectorPrefix     = "sg:name"
 	tagSelectorPrefix        = "tag"
@@ -554,6 +555,7 @@ func resolveIIDocSelectors(selectorSet map[string]bool, iiDoc imds.InstanceIdent
 	selectorSet[fmt.Sprintf("%s:%s", instanceIDSelectorPrefix, iiDoc.InstanceID)] = true
 	selectorSet[fmt.Sprintf("%s:%s", regionSelectorPrefix, iiDoc.Region)] = true
 	selectorSet[fmt.Sprintf("%s:%s", azSelectorPrefix, iiDoc.AvailabilityZone)] = true
+	selectorSet[fmt.Sprintf("%s:%s", accountIDSelectorPrefix, iiDoc.AccountID)] = true
 }
 
 func resolveTags(tags []ec2types.Tag) []string {
